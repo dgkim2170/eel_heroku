@@ -1,0 +1,1 @@
+web: gunicorn eel_heroku.wsgi --log-file -
