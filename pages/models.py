@@ -162,22 +162,22 @@ class PhotographCategory(models.Model):
 	def get_tuple(self):
 		return (self.category, self.category_name)
 
-# class Photograph(models.Model):
-# 	CATEGORY = (
-# 			# ('category1', 'Category1'),
-# 			# (,),
-# 		)
-# 	CATEGORY = [cat.get_tuple() for cat in PhotographCategory.objects.all()]
+class Photograph(models.Model):
+	CATEGORY = (
+			# ('category1', 'Category1'),
+			# (,),
+		)
+	CATEGORY = [cat.get_tuple() for cat in PhotographCategory.objects.all()]
 
-# 	image = models.ImageField(upload_to='photo/', null=True)
-# 	category = models.CharField(max_length=255, choices=CATEGORY, null=True)
-# 	title = models.CharField(max_length=255, blank=True, null=True)
-# 	description = models.CharField(max_length=255, blank=True, null=True)
-# 	date = models.DateField(blank=True, null=True)
-# 	updated = models.DateTimeField(auto_now=True)
-# 	made = models.DateTimeField(auto_now_add=True)
-# 	def __unicode__(self):
-# 		return "[%s]%s" %(self.date, self.title)
+	image = models.ImageField(upload_to='photo/', null=True)
+	category = models.CharField(max_length=255, choices=CATEGORY, null=True)
+	title = models.CharField(max_length=255, blank=True, null=True)
+	description = models.CharField(max_length=255, blank=True, null=True)
+	date = models.DateField(blank=True, null=True)
+	updated = models.DateTimeField(auto_now=True)
+	made = models.DateTimeField(auto_now_add=True)
+	def __unicode__(self):
+		return "[%s]%s" %(self.date, self.title)
 
 class News(models.Model):
 	title = models.CharField(max_length=255, blank=True, null=True)
