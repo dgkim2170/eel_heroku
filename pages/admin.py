@@ -9,7 +9,7 @@ from pages.models import Intro, ResearchIntro, Research, Project, \
 						Faculty, Collaborator, Student, Alumnus, \
 						InternationalJournal, DomesticJournal, Book, \
 						Lecture, UsefulLink, Calender, \
-						PhotographCategory, Photograph, News, Contact
+						PhotographCategory, News, Contact
 
 # Register your models here.
 class DefaultAdmin(admin.ModelAdmin):
@@ -134,24 +134,8 @@ admin.site.register(UsefulLink, UsefullinkAdmin)
 
 admin.site.register(Calender)
 
-class PhotoAdminForm(forms.ModelForm):
-	class Meta:
-		model = Photograph
-		# fields = ['category']
-		fields = ('image', 'category', 'title', 'description', 'date')
-	def __init__(self, *args, **kwargs):
-		super(PhotoAdminForm, self).__init__(*args, **kwargs)
-		CATEGORIES = [cat.get_tuple() for cat in PhotographCategory.objects.all()]
-		self.fields['category'].choices = CATEGORIES
-class PhotoAdmin(admin.ModelAdmin):
-	urladd = '#photographs'
-	# def formfield_for_choice_field(self, db_field, request, **kwargs):
-	# 	if db_field.name == 'category':
-	# 		kwargs['choices'] = [cat.get_tuple() for cat in PhotographCategory.objects.all()]
-	# 	return super(PhotoAdmin, self).formfield_for_choice_field(db_field, request, **kwargs)
-	form = PhotoAdminForm
 admin.site.register(PhotographCategory)
-admin.site.register(Photograph,PhotoAdmin)
+# admin.site.register(Photograph,PhotoAdmin)
 
 class NewsAdminForm(forms.ModelForm):
 	description = forms.CharField(widget=RedactorEditor())
