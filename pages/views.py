@@ -4,7 +4,7 @@ from pages.models import Intro, ResearchIntro, Research, Project, \
 						Faculty, Collaborator, Student, Alumnus, \
 						InternationalJournal, DomesticJournal, Book, \
 						Lecture, UsefulLink, Calender, \
-						PhotographCategory, Photograph, News, Contact
+						PhotographCategory, News, Contact
 
 # Create your views here.
 def index(request):
@@ -29,7 +29,7 @@ def index(request):
 	calender = Calender.objects.all()
 	context['calender'] = [event.get_obj() for event in calender]
 	context['photocategories'] = PhotographCategory.objects.all()
-	context['photographs'] = Photograph.objects.all()
+	# context['photographs'] = Photograph.objects.all()
 	context['news'] = News.objects.all()
 	context['contact'] = Contact.objects.latest('updated')
 	return render(request, 'pages/index.html', context)
